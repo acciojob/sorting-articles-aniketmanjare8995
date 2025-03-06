@@ -5,15 +5,15 @@ const bands = [
     "Counterparts", "Oh, Sleeper", "A Skylit Drive", "Anywhere But Here", "An Old Dog"
 ];
 
-// Function to remove "A", "An", "The" from the beginning for sorting
+// Function to strip 'A', 'An', 'The' for sorting
 function stripArticle(name) {
-    return name.replace(/^(a |an |the )/i, '').trim(); 
+    return name.replace(/^(a |an |the )/i, '').toLowerCase().trim(); 
 }
 
-// Sort the list ignoring articles
+// Sort the array using the stripped version for comparison
 const sortedBands = bands.sort((a, b) => stripArticle(a).localeCompare(stripArticle(b)));
 
-// Select the <ul> element and populate it
+// Append sorted list to the HTML
 const bandList = document.getElementById('band');
 sortedBands.forEach(band => {
     const li = document.createElement('li');
